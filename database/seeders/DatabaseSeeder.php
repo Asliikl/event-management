@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\EventFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1000)->create();
 
-        $this->call(EventFactory::class);
+        $this->call(EventSeeder::class);
         $this->call(AttendeeSeeder::class);
-
     }
 }
