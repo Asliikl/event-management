@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
 use App\Http\Traits\CanLoadRelationships;
@@ -27,6 +27,7 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
+        Gate::authorize('create', Event::class);
         $event = Event::create([
             ...$request->validate([
                 'name' => 'required|string|max:255',
@@ -50,6 +51,9 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
+//        if(Gate::allows('update-event',$event)){
+//            abort(403 , 'You are not authorized to update this event.');
+//        }
         $event->update(
             $request->validate([
                 'name' => 'sometimes|string|max:255',
@@ -64,7 +68,9 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
+        Gate::authorize('delete', $event);
         $event->delete();
+
         return response(status: 204);
     }
 }

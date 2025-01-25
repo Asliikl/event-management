@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\AttendeeResource;
 use App\Models\Attendee;
 use App\Http\Traits\CanLoadRelationships;
-
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

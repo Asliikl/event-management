@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Models\Event;
+
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -19,8 +21,10 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
-    {
-        //
-    }
+//    public function boot(): void
+//    {
+//        RateLimiter::for('api', function (Request $request) {
+//            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+//        });
+//    }
 }
